@@ -10,7 +10,7 @@
     
     <title>
         
-            高效地配置OkHttp | 
+            Android开发规范与性能 | 
         
         Hexo
     </title>
@@ -25,7 +25,7 @@
     <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0097A7">
-    <meta name="author" content="John Doe">
+    <meta name="author" content="Ashes">
     <meta name="description" content="null">
     <meta name="keywords" content="null">
 
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="高效地配置OkHttp | Hexo">
+    <meta property="og:title" content="Android开发规范与性能 | Hexo">
     <meta property="og:description" content="null">
 
     <!--[if lte IE 9]>
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                高效地配置OkHttp
+                Android开发规范与性能
             </p>
         </div>
 
@@ -280,8 +280,8 @@
     </div>
     <!-- Author Name & Date -->
     <div>
-        <strong>John Doe</strong>
-        <span>Feb 09, 2017</span>
+        <strong>Ashes</strong>
+        <span>12月 23, 2015</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -321,36 +321,36 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=高效地配置OkHttp&url=http://yoursite.com//2017/02/09/hello-world/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Android开发规范与性能&url=http://yoursite.com//2015/12/23/Android开发规范与性能/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
-                شارك على Weibo
+                分享到微博
             </li>
         </a>
     
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=高效地配置OkHttp&url=http://yoursite.com//2017/02/09/hello-world/index.html&via=John Doe" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Android开发规范与性能&url=http://yoursite.com//2015/12/23/Android开发规范与性能/index.html&via=Ashes" target="_blank">
             <li class="mdl-menu__item">
-                شارك على Twitter
+                分享到 Twitter
             </li>
         </a>
     
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/02/09/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2015/12/23/Android开发规范与性能/index.html" target="_blank">
             <li class="mdl-menu__item">
-                شارك على Facebook
+                分享到 Facebook
             </li>
         </a>
     
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/02/09/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2015/12/23/Android开发规范与性能/index.html" target="_blank">
             <li class="mdl-menu__item">
-                شارك على Google+
+                分享到 Google+
             </li>
         </a>
     
@@ -372,54 +372,32 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <ol>
-<li>开启响应数据缓存到文件系统功能<br>允许缓存响应数据时需要往请求头里加入Cache-Control，默认情况下OkHttp不会缓存响应数据。所以，客户端就会浪费时间和流量去多次请求同样的数据。相反的，如果缓存了响应数据，只需要在第一次请求的时候从网络获取，以后就可以直接从缓存文件中获取数据。</li>
-</ol>
-<p>为了开启缓存响应数据功能，你需要创建一个com.squareup.okhttp.Cache对象并将其作为参数传给OkHttpClient的setCache方法。在创建Cache对象的时候，你必须为其指定一个File参数和以byte为单位的最大容量参数，这个File代表了缓存的路径。缓存的数据会被存储在这个路径中。当缓存的大小超过指定的最大容量时，OkHttp会根据LRU算法对缓存数据进行清理操作。</p>
-<p>根据Jesse Wilson的推荐，我们把缓存的数据存放在context.getCacheDir()的子目录中:</p>
-<p>// Base directory recommended by <a href="http://stackoverflow.com/a/32752861/400717" target="_blank" rel="external">http://stackoverflow.com/a/32752861/400717</a>.<br>// Guard against null, which is possible according to<br>// <a href="https://groups.google.com/d/msg/android-developers/-694j87eXVU/YYs4b6kextwJ" target="_blank" rel="external">https://groups.google.com/d/msg/android-developers/-694j87eXVU/YYs4b6kextwJ</a> and<br>// <a href="http://stackoverflow.com/q/4441849/400717" target="_blank" rel="external">http://stackoverflow.com/q/4441849/400717</a>.<br>final @Nullable File baseDir = context.getCacheDir();<br>if (baseDir != null) {<br>  final File cacheDir = new File(baseDir, “HttpResponseCache”);<br>  okHttpClient.setCache(new Cache(cacheDir, HTTP_RESPONSE_DISK_CACHE_MAX_SIZE));<br>}</p>
-<ol>
-<li>集成Stetho<br>Stetho是由Facebook开发的一个实用的库，它可以让你使用Chrome提供的Chrome Developer Tools来审查你的Android应用的代码。</li>
-</ol>
-<p>除了可以让你审查应用中的SQLite数据库和View的继承层次外，Stetho也可以审查OkHttp发起的每一个请求和收到的每一个响应:</p>
-<p>这个拦截器可以确保服务端返回的HTTP头允许缓存相关数据，而且也可以保证如果有缓存数据的话不会进行网络请求。</p>
-<p>使用Stetho也很简单，往网络拦截器列表中添加一个StethoInterceptor对象就可以了:</p>
-<p>okHttpClient.networkInterceptors().add(new StethoInterceptor());</p>
-<p>1<br>2<br>okHttpClient.networkInterceptors().add(new StethoInterceptor());</p>
-<p>然后运行你的应用并且打开Chrome，导航到chrome://inspect。<br>这时应该就会有一个设备和应用id的列表。点击’inspect’链接来打开Developer Tools，然后打开NetWork标签就可以观察OkHttp的请求了。</p>
-<ol>
-<li>在你的应用中使用Picasso and Retrofit<br>如果你也像我们一样使用Picasso加载网络图片，或者使用Retrofit简化网络请求和数据解析。在你没有明确指定一个OkHttpClient的情况下，这些库会自己创建一个默认的供内部使用。比如2.5.2的Picasso中OkHttpDownloader类是如下这样:</li>
-</ol>
-<p>private static OkHttpClient defaultOkHttpClient() {<br>  OkHttpClient client = new OkHttpClient();<br>  client.setConnectTimeout(Utils.DEFAULT_CONNECT_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);<br>  client.setReadTimeout(Utils.DEFAULT_READ_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);<br>  client.setWriteTimeout(Utils.DEFAULT_WRITE_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);<br>  return client;<br>}</p>
-<p>Retrofit有一个类似的工厂方法来创建自己的OkHttpClient。</p>
-<p>图片是一个应用中比较大的资源。Picasso使用LRU算法对图片进行了缓存，严格来说是内存缓存。如果客户端试图使用Picasso加载一张图片，但是Picasso没有在内存缓存中找到这张图片。那么它就会委托内部的OkHttpClient来加载这张图片。默认情况下它总是会从网络加载图片，因为上文提到的defaultOkHttpClient并没有配置缓存响应数据到文件系统。</p>
-<p>指定你自己的OkHttpClient可以让你从文件系统中获得缓存的响应数据，而不用每次都从服务端去获取数据。在App完成第一次启动后，这个特性特别重要。这个时候Picasso还没有内存缓存，所以它会频繁的让OkHttpClient去加载图片。</p>
-<p>为了实现上面说的，你只需要用OkHttpDownloader对OkHttpClient进行包裹，并把它作为参数传给Picasso.Builder的downloader方法：</p>
-<p>final Picasso picasso = new Picasso.Builder(context)<br>    .downloader(new OkHttpDownloader(okHttpClient))<br>    .build();</p>
-<p>// The client should inject this instance whenever it is needed, but replace the singleton<br>// instance just in case.<br>Picasso.setSingletonInstance(picasso);</p>
-<p>为了在Retrofit 1.9.x中结合RestAdapter使用OkHttpClient，把OkHttpClient包裹在OkClient中，再把它作为RestAdapter.Builder的setClient方法的参数传进去尽可以了：</p>
-<p>restAdapterBuilder.setClient(new OkClient(httpClient));</p>
-<p>在Retrofit 2.0中就更简单了，直接把OkHttpClient作为Retrofit.Builder的client方法的参数传递进去就行了。</p>
-<p>在可汗学院App中，我们借助Dagger来确保只有一个OkHttpClient的实例。这个实例被Picasso和Retrofit共同使用。我们使用@Singleton注解为OkHttpClient实例创建了一个提供者：</p>
-<p>@Provides<br>@Singleton<br>public OkHttpClient okHttpClient(final Context context, …) {<br>  final OkHttpClient okHttpClient = new OkHttpClient();<br>  configureClient(okHttpClient, …);<br>  return okHttpClient;<br>}</p>
-<p>然后使用Dagger将OkHttpClient注入到其他的提供者当中。这些提供者又创建了RestAdapter和Picasso实例。</p>
-<ol>
-<li>指定用户代理拦截器<br>当用户在每个请求里指定一个详细的User-Agent请求头的值的时候，日志文件和日志分析就变得更加有用了。默认情况下，OkHttp包含了一个User-Agent的请求头，但这个头仅仅标识出了OkHttp的版本信息。你可以创建一个自定义个拦截器来取代这个默认值，以下是StackOverflow上的一段可供参考的代码:</li>
-</ol>
-<p>public final class UserAgentInterceptor implements Interceptor {<br>  private static final String USER_AGENT_HEADER_NAME = “User-Agent”;<br>  private final String userAgentHeaderValue;</p>
-<p>  public UserAgentInterceptor(String userAgentHeaderValue) {<br>    this.userAgentHeaderValue = Preconditions.checkNotNull(userAgentHeaderValue);<br>  }</p>
-<p>  @Override<br>  public Response intercept(Chain chain) throws IOException {<br>    final Request originalRequest = chain.request();<br>    final Request requestWithUserAgent = originalRequest.newBuilder()<br>        .removeHeader(USER_AGENT_HEADER_NAME)<br>        .addHeader(USER_AGENT_HEADER_NAME, userAgentHeaderValue)<br>        .build();<br>    return chain.proceed(requestWithUserAgent);<br>  }<br>}</p>
-<p>你可以使用任何你觉得有用的信息作为参数传递到UserAgentInterceptor的构造方法中来构造User-Agent头的值。我们使用了一下的信息：</p>
-<p>Android系统的os值，用它来明确额标识出这是来自Android设备的请求<br>Build.MODEL, 或“终端用户可见的产品名称”<br>Build.BRAND, 或“消费者可见的产品或者硬件品牌名”<br>Build.VERSION.SDK_INT, 或“用户可见的AndroidSDK版本号”<br>BuildConfig.APPLICATION_ID<br>BuildConfig.VERSION_NAME<br>BuildConfig.VERSION_CODE<br>最后三个参数我们通过Gradle构建脚本里的applicationId, versionCode和versionName来指定。你可以查看这里和这里的文档来获取更多的信息。</p>
-<p>需要注意的是，如果你的App中用到了WebView,你可以配置你的WebView使用与UserAgentInterceptor的构造参数相同的User-Agent的值：</p>
-<p>WebSettings settings = webView.getSettings();<br>settings.setUserAgentString(userAgentHeaderValue);</p>
-<ol>
-<li>配置合理的超时时间<br>在2.5.0之前，OkHttp的请求默认不会超时。从2.5.0开始，如果一个请求建立连接后从这个连接中读取数据或者向这个连接写入数据超过10秒钟就认为超时。更新到2.5.0之后，我们的代码中出现了一些bug，因为一开始想要确定出错的具体位置。要覆盖这些默认行为，只需要对应的去调用setConnectTimeout、setReadTimeout 或者 setWriteTimeout方法即可。</li>
-</ol>
-<p>需要注意的是Picasso和Retrofit的默认OkHttpClient的超时时间是不同的。Picasso的默认值分别是：</p>
-<p>连接超时15秒<br>读数据超时20秒<br>写数据超时20秒<br>而Retrofit的默认值是：</p>
-<p>连接超时15秒<br>读数据超时20秒<br>写数据不会超时<br>你可以使用自定义的OkHttpClient来配置Picasso和Retrofit，这样就可以保证所有的请求超时时间都是统一的。</p>
-<p>总结<br>再次声明，默认的OkHttp的配置方式已经提供了很大的便利。但是通过以上步骤你可以提高它更加高效与智能，从而提升你的App质量</p>
+        <p>原文链接 : <a href="https://medium.com/google-developers/developing-for-android-iii-2efc140167fd#.hktu5pimb" target="_blank" rel="external">Developing for Android, III: The Rules: Performance</a></p>
+<p>在Android设备上, 性能和内存是密不可分的, 系统的总内存占用会影响到系统的每个进程的性能表现, 垃圾回收机制也会对runtime的性能表现产生重要影响. 但是本章节要讨论的重点是一些和内存无关的的runtime性能表现.</p>
+<p>在动画和用户交互时避免复杂操作<br>之前在Context章节的 “UI Thread” 部分已经提到过, UI线程中的复杂操作会引起渲染过程的卡顿. 连锁反应会影响到动画效果, 因为动画的每一帧都是一次渲染. 这就意味着当有动画出现时UI线程里更应该避免复杂的操作. 下面是一些应该避免的常见情况:</p>
+<p>Layout:</p>
+<p>Measurement和Layout是非常复杂的操作, view的层级关系越复杂, 处理起来就越耗时. Measurement和layout发生在UI线程 (所有需要改动activity里view的操作都在UI线程中进行). 这就意味着如果一个程序正在执行一个流畅的动画的时候被告知需要在UI线程中同时执行layout操作, 结果动画肯定要受罪了.</p>
+<p>假设你的程序可以在13毫秒内绘制完成一个指定的动画, 这是在16毫秒的规定范围内的(Google官方推荐每秒60帧的刷新频率). 如果这时一个事件触发了需要耗时5毫秒的一个layout动作, 那么这个layout操作会在动画的下一帧绘制之前执行, 这就会将总绘制耗时增加到18毫秒, 结果就是动画效果有一个明显的跳帧.</p>
+<p>为了避免这种情况的发生, layout操作要在动画开始前或动画完成后进行. 还有就是, 尽量使用不会触发layout操作的动画效果. 比如, view的translationX和translationY属性会影响post-layout属性. 而LayoutParams的属性又会触发一个layout操作去产生作用, 所以类似这种属性的动画效果会影响已经比较合理的ui显示.</p>
+<p>Inflation:</p>
+<p>view的inflation过程只能在UI线程完成, 如果操作不当会变成一个非常耗时的过程 (view的层级关系越深, inflation过程就越耗时) Inflation 过程可以通过主动inflate一个view或view树触发, 也可以通过启动一个不同的的activity时隐性触发, 隐性触发会发生在UI线程中, 进而会造成activity在inflation过程中的动画卡顿.</p>
+<p>为了避免这种情况, 应该等待当前的动画结束后再触发view的inflation操作或者activity的启动操作. 还有一种情况就是, 为了避免多type的list在滚动时的inflation相关问题, 可以考虑预先inflate不同type的view. 比如, RecyclerView支持预设一个可以产生不同type的ItemView的RecycledViewPool.</p>
+<p>快速启动<br>view的inflation过程有些耗时. 并不只是解析一些资源文件那么简单, 更包含了实例化潜在的许许多多的view和各个view初始化时自身耗时的操作. 包括bitmap的解码过程, 绘制layout的过程, 还有第一次初始化时的draw过程. ui写的越复杂, view树状结构层级关系越深,整体的inflation过程就会越耗时.</p>
+<p>以上的这些都会拖慢程序的启动过程. 当用户启动一个程序时, 他们期望看到的是几乎瞬时的反馈可以告知他们程序已经跑起来了. Android系统用了一个”启动界面” 来实现这一效果, 包括一个程序设定主题的空白窗口和一些特定的背景图画. “启动界面”是在程序在后台加载以及inflation的过程中在系统进程展示的. 当activity准备好可以被展示了, 启动界面就切换到了真正的内容, 用户就可以开始使用程序了.</p>
+<p>启动界面的加入确实可以给用户一个快速反馈告诉用户程序正在启动, 但是这并不足以应付需要两三秒甚至更长时间启动的程序; 结果就是用户被迫坐在那里盯着空空的启动界面直到程序真正启动起来.</p>
+<p>解决这个问题的办法就是用最快的速度启动程序. 如果有一些UI界面并不需要在第一次启动的时候展示, 那么就不要初始化它们. 用ViewStub 作为sub-hierarchies的临时占位对象, 这样随时可以填充为真正的UI元素. 只要有可能就尽量避免类似解码很大的bitmap这样的耗时操作. 尽量避免因为内存分配或垃圾回收引起的内存抖动. 用工具去监控程序的启动时间, 发现并消除遇到的瓶颈.</p>
+<p>同时, 避免在Application对象中的初始化操作. 只要有新的进程启动, Application类就会创建新的对象. 会潜在的引起许多超出实际需要(只展示初始化UI)的操作. 比如, 当某个用户在查看一张图片时想分享它, 于是选中了你的程序, 这时你的程序需要做的只是展示一个分享界面就可以了. 现在Application的子类越来越变成了一个初始化一切操作的仓库, 做着很多多余的工作. 相反, 正确的做法是用单例去控制初始化操作, 这样的话初始化操作只会在该单例第一次被调用时执行. 还有就是, 永远不要在Application对象中触发网络请求. 因为Application对象也许会在Service或者BroadcastReceiver启动时被创建; 此时触发网络操作会使一段特定频率下请求数据更新的代码变成对服务器的DDoS攻击代码.</p>
+<p>还有就是, 程序启动前所处在的状态不同, 启动时间也大不相同. 最坏一种情况是程序完全没有被启动: 此时进程需要被启动, 所有的状态也需要被重新初始化, 程序需要完成所有的inflation, layout和drawing过程. 另外一个极端情况是, 程序已经启动并在后台运行着, 这时要开启它, 系统只需要把它从后台切换到前台就可以了 – 甚至省去了大量的layout和rendering过程. 除了两种极端情况外, 还有另外两种场景. 一个是当用户退出程序时, 进程可能还在跑, 但是要再次开启程序, 所有任务需要从头来过(从调用Activity.onCreate()方法开始). 还有一种场景是当系统将程序任务从内存中删掉时, 进程和任务都需要重新启动, 但是任务结束时保存的状态会通过Activity.onCreate()传给程序并使之受益. 当你测试你的程序的启动时间时, 要确保优化的是最坏场景下的启动过程, 此时进程和任务都需要重新启动. 制造此场景的方法就是, 你可以在最近的任务列表中划掉你的程序杀掉任务和进程, 这就保证了程序下次启动时是完全重新启动的.</p>
+<p>避免View复杂的层级关系<br>界面层级关系中的view越多, 系统进行一般的操作需要消耗的时间就越长, 比如inflation, layout和rendering过程(许多无用的内容占据了很多内存; view本身也很能占据内存, 尤其是自定义控件带来的更多数据). 要找到最节约资源的方式去组织view中的控件. 在某些场景下用自定义view或者自定义layout可以避免复杂的view层级关系. 用一个单一的view去画一些文字和icon也许比用一系列组合viewgroup来实现一样的效果更节省资源. 在交互界面中如何组合控件有一个准则: 如果用户可以和某一UI元素产生交互(比如touch事件, 获取focus等), 那么这个UI元素应该是一个独立的view 而不应该和其他元素组合.</p>
+<p>避免在靠近view层级关系顶层的地方使用RelativeLayout<br>RelativeLayout是一个用起来很方便的控件, 因为它允许工程师们用相对布局摆放子控件. 在许多情况下, 这是个解决问题非常有必要的方案. 但是, 一定要明白使用RelativeLayout非常消耗资源. 因为RelativeLayout会触发两次measurement过程来保证正确的处理了所有子元素的关系. 更糟的是, 它会和view层级关系中其他的RelativeLayout一起产生更坏的后果. 想象一下一个view层级关系的顶部是一个RelativeLayout; 这本来就将所有子view的measurement次数变成了原来的两倍. 此时如果另外一个RelativeLayout是顶部那个RelativeLayout的子view,那么这时它下面所有子view的measurement次数又变成了原来的两倍, 也就是所它下面的所有子view都经历了四次measurement过程.</p>
+<p>所以要尽量使用不需要两次measure过程的控件, 比如LinearLayout或者自定义layout. 如果一定要用相对布局的方案, 可以考虑用一个自定义的GridLayout, 可以预处理view的相对关系, 从而避免了两次measure的问题.</p>
+<p>避免在UI线程中的复杂操作<br>拖延UI线程会导致动画和界面绘制过程的滞后, 造成用户可以感知到的卡顿. 在UI线程(比如 onDraw()方法 onLayout()方法, 或者一些UI线程中被调用的和view展示有关的方法)避免一些众所周知的耗时操作. 比如调用web service 或执行其它网络请求(会抛出NetworkOnMainThreadException), 或者是访问数据库. 相反, 应该考虑用Loader或者其它模块异步操作完成后再通知UI线程修改界面. 可以用StrictMode模块监控这种问题.</p>
+<p>不可以在UI线程访问数据库和文件的另外一个重要原因是Android设备通常并不善于处理IO的并发. 即使你的程序闲置的时候, 其它的程序也许在高负荷的访问磁盘I/O (比如谷歌商店在更新软件). 结果就是有可能会导致ANR发生, 或者至少会导致你的程序出现的严重卡顿.</p>
+<p>总的来说, 只要可以放在异步处理的任务就尽量放在异步处理; UI线程需要做的应该只是和UI相关的核心操作, 比如控制界面上元素的属性或者是绘制过程.</p>
+<p>把程序的唤醒次数降到最低<br>广播接收者被用来接受其它程序发来的消息或者事件. 但是如果超出实际需要, 响应过多的广播会导致程序被频繁的唤醒, 从而影响整个系统的性能表现和资源消耗. 应该在程序不需要接受某个广播的时候反注册掉该广播接收者. 注册广播接收者时也要只选择程序需要监听的Intent.</p>
+<p>为低端设备开发<br>这与前面在Context章节关于低端设备的讨论有关. 也许大多数的用户的设备都不如你每天用的设备性能好, 也许比你的设备用的更久或者更便宜. 为这部分低端手机开发非常的重要, 一些在高端设备上很难察觉的性能差异在低端设备上会非常明显. 你的首选开发设备不应该是市面上最快最新的设备, 而且你也应该持有各种不同的测试设备, 这样就可以保证你的程序在不同速度不同厂商的设备上都有足够的性能表现.</p>
+<p>这些需要测试的其它低性能设备包括内存较小的设备或者屏幕分辨率较小的设备. 比如512MB内存的设备, 或者拥有768×480或者更低的屏幕分辨率的设备.</p>
+<p>测试性能表现<br>市面上有许多工具可以用来测试你的程序的性能表现, 比如rendering的性能(程序可以达到60fps的刷新频率吗?), 内存回收性能(动画的过程中会因为持续的内存非配所引发的垃圾回收而发生卡顿吗?), 或者程序启动性能(用户会因为你的程序第一次启动做了大量的工作而耽误很长时间吗?). 找到问题. 修复他们.</p>
 
     
 
@@ -447,6 +425,14 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2015/12/02/高效地配置OkHttp/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -478,7 +464,7 @@
 
     <!-- Sidebar Avatar -->
     <div class="sidebar-image">
-        <img src="/img/avatar.png" alt="John Doe's avatar">
+        <img src="/img/avatar.png" alt="Ashes's avatar">
     </div>
 
     <!-- Sidebar Email -->
@@ -509,7 +495,7 @@
     <li id="sidebar-first-li">
         <a href="/" target="_self">
             <i class="material-icons sidebar-material-icons">home</i>
-            الرئيسية
+            主页
         </a>
     </li>
 
@@ -527,12 +513,12 @@
     <li class="dropdown">
         <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
             <i class="material-icons sidebar-material-icons">inbox</i>
-             أرشيف
+             归档
             <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">1</span></a>
+            <a class="sidebar_archives-link" href="/archives/2015/12/">十二月 2015<span class="sidebar_archives-count">2</span></a>
         </ul>
     </li>
 
@@ -549,8 +535,8 @@
     <!-- Article Numebr  -->
     <li>
         <a href="/archives">
-            رقم المقالة
-            <span class="sidebar-badge">1</span>
+            文章总数
+            <span class="sidebar-badge">2</span>
         </a>
     </li>
 </ul>
@@ -573,7 +559,7 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Theme Material -->
 <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
     <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-        سمة - Material
+        主题 - Material
         <span class="sidebar-badge badge-circle">i</span>
     </div>
 </a>
