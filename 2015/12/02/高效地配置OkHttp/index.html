@@ -10,7 +10,7 @@
     
     <title>
         
-            أرشيف | 
+            高效地配置OkHttp | 
         
         Hexo
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="أرشيف | Hexo">
+    <meta property="og:title" content="高效地配置OkHttp | Hexo">
     <meta property="og:description" content="null">
 
     <!--[if lte IE 9]>
@@ -200,88 +200,258 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
         
-            <!-- Paradox Thumbnail -->
-            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2015/12/02/高效地配置OkHttp/">高效地配置OkHttp</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-开启响应数据缓存到文件系统功能允许缓存响应数据时需要往请求头里加入Cache-Control，默认情况下OkHttp不会缓存响应...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2015/12/02/高效地配置OkHttp/" target="_self">واصل القراءة</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Ashes's avatar">
-            </div>
-            <div>
-                <strong>Ashes</strong>
-                <span>Dec 02, 2015</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                
-            </span>
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-        
-        
-    
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
-
-        locatePost = locatePost.next();
-    }
+    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                高效地配置OkHttp
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Ashes</strong>
+        <span>12月 02, 2015</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=高效地配置OkHttp&url=http://yoursite.com//2015/12/02/高效地配置OkHttp/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=高效地配置OkHttp&url=http://yoursite.com//2015/12/02/高效地配置OkHttp/index.html&via=Ashes" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2015/12/02/高效地配置OkHttp/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2015/12/02/高效地配置OkHttp/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <ol>
+<li>开启响应数据缓存到文件系统功能<br>允许缓存响应数据时需要往请求头里加入Cache-Control，默认情况下OkHttp不会缓存响应数据。所以，客户端就会浪费时间和流量去多次请求同样的数据。相反的，如果缓存了响应数据，只需要在第一次请求的时候从网络获取，以后就可以直接从缓存文件中获取数据。</li>
+</ol>
+<p>为了开启缓存响应数据功能，你需要创建一个com.squareup.okhttp.Cache对象并将其作为参数传给OkHttpClient的setCache方法。在创建Cache对象的时候，你必须为其指定一个File参数和以byte为单位的最大容量参数，这个File代表了缓存的路径。缓存的数据会被存储在这个路径中。当缓存的大小超过指定的最大容量时，OkHttp会根据LRU算法对缓存数据进行清理操作。</p>
+<p>根据Jesse Wilson的推荐，我们把缓存的数据存放在context.getCacheDir()的子目录中:</p>
+<p>// Base directory recommended by <a href="http://stackoverflow.com/a/32752861/400717" target="_blank" rel="external">http://stackoverflow.com/a/32752861/400717</a>.<br>// Guard against null, which is possible according to<br>// <a href="https://groups.google.com/d/msg/android-developers/-694j87eXVU/YYs4b6kextwJ" target="_blank" rel="external">https://groups.google.com/d/msg/android-developers/-694j87eXVU/YYs4b6kextwJ</a> and<br>// <a href="http://stackoverflow.com/q/4441849/400717" target="_blank" rel="external">http://stackoverflow.com/q/4441849/400717</a>.<br>final @Nullable File baseDir = context.getCacheDir();<br>if (baseDir != null) {<br>  final File cacheDir = new File(baseDir, “HttpResponseCache”);<br>  okHttpClient.setCache(new Cache(cacheDir, HTTP_RESPONSE_DISK_CACHE_MAX_SIZE));<br>}</p>
+<ol>
+<li>集成Stetho<br>Stetho是由Facebook开发的一个实用的库，它可以让你使用Chrome提供的Chrome Developer Tools来审查你的Android应用的代码。</li>
+</ol>
+<p>除了可以让你审查应用中的SQLite数据库和View的继承层次外，Stetho也可以审查OkHttp发起的每一个请求和收到的每一个响应:</p>
+<p>这个拦截器可以确保服务端返回的HTTP头允许缓存相关数据，而且也可以保证如果有缓存数据的话不会进行网络请求。</p>
+<p>使用Stetho也很简单，往网络拦截器列表中添加一个StethoInterceptor对象就可以了:</p>
+<p>okHttpClient.networkInterceptors().add(new StethoInterceptor());</p>
+<p>然后运行你的应用并且打开Chrome，导航到chrome://inspect。<br>这时应该就会有一个设备和应用id的列表。点击’inspect’链接来打开Developer Tools，然后打开NetWork标签就可以观察OkHttp的请求了。</p>
+<ol>
+<li>在你的应用中使用Picasso and Retrofit<br>如果你也像我们一样使用Picasso加载网络图片，或者使用Retrofit简化网络请求和数据解析。在你没有明确指定一个OkHttpClient的情况下，这些库会自己创建一个默认的供内部使用。比如2.5.2的Picasso中OkHttpDownloader类是如下这样:</li>
+</ol>
+<p>private static OkHttpClient defaultOkHttpClient() {<br>  OkHttpClient client = new OkHttpClient();<br>  client.setConnectTimeout(Utils.DEFAULT_CONNECT_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);<br>  client.setReadTimeout(Utils.DEFAULT_READ_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);<br>  client.setWriteTimeout(Utils.DEFAULT_WRITE_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);<br>  return client;<br>}</p>
+<p>Retrofit有一个类似的工厂方法来创建自己的OkHttpClient。</p>
+<p>图片是一个应用中比较大的资源。Picasso使用LRU算法对图片进行了缓存，严格来说是内存缓存。如果客户端试图使用Picasso加载一张图片，但是Picasso没有在内存缓存中找到这张图片。那么它就会委托内部的OkHttpClient来加载这张图片。默认情况下它总是会从网络加载图片，因为上文提到的defaultOkHttpClient并没有配置缓存响应数据到文件系统。</p>
+<p>指定你自己的OkHttpClient可以让你从文件系统中获得缓存的响应数据，而不用每次都从服务端去获取数据。在App完成第一次启动后，这个特性特别重要。这个时候Picasso还没有内存缓存，所以它会频繁的让OkHttpClient去加载图片。</p>
+<p>为了实现上面说的，你只需要用OkHttpDownloader对OkHttpClient进行包裹，并把它作为参数传给Picasso.Builder的downloader方法：</p>
+<p>final Picasso picasso = new Picasso.Builder(context)<br>    .downloader(new OkHttpDownloader(okHttpClient))<br>    .build();</p>
+<p>// The client should inject this instance whenever it is needed, but replace the singleton<br>// instance just in case.<br>Picasso.setSingletonInstance(picasso);</p>
+<p>为了在Retrofit 1.9.x中结合RestAdapter使用OkHttpClient，把OkHttpClient包裹在OkClient中，再把它作为RestAdapter.Builder的setClient方法的参数传进去尽可以了：</p>
+<p>restAdapterBuilder.setClient(new OkClient(httpClient));</p>
+<p>在Retrofit 2.0中就更简单了，直接把OkHttpClient作为Retrofit.Builder的client方法的参数传递进去就行了。</p>
+<p>在可汗学院App中，我们借助Dagger来确保只有一个OkHttpClient的实例。这个实例被Picasso和Retrofit共同使用。我们使用@Singleton注解为OkHttpClient实例创建了一个提供者：</p>
+<p>@Provides<br>@Singleton<br>public OkHttpClient okHttpClient(final Context context, …) {<br>  final OkHttpClient okHttpClient = new OkHttpClient();<br>  configureClient(okHttpClient, …);<br>  return okHttpClient;<br>}</p>
+<p>然后使用Dagger将OkHttpClient注入到其他的提供者当中。这些提供者又创建了RestAdapter和Picasso实例。</p>
+<ol>
+<li>指定用户代理拦截器<br>当用户在每个请求里指定一个详细的User-Agent请求头的值的时候，日志文件和日志分析就变得更加有用了。默认情况下，OkHttp包含了一个User-Agent的请求头，但这个头仅仅标识出了OkHttp的版本信息。你可以创建一个自定义个拦截器来取代这个默认值，以下是StackOverflow上的一段可供参考的代码:</li>
+</ol>
+<p>public final class UserAgentInterceptor implements Interceptor {<br>  private static final String USER_AGENT_HEADER_NAME = “User-Agent”;<br>  private final String userAgentHeaderValue;</p>
+<p>  public UserAgentInterceptor(String userAgentHeaderValue) {<br>    this.userAgentHeaderValue = Preconditions.checkNotNull(userAgentHeaderValue);<br>  }</p>
+<p>  @Override<br>  public Response intercept(Chain chain) throws IOException {<br>    final Request originalRequest = chain.request();<br>    final Request requestWithUserAgent = originalRequest.newBuilder()<br>        .removeHeader(USER_AGENT_HEADER_NAME)<br>        .addHeader(USER_AGENT_HEADER_NAME, userAgentHeaderValue)<br>        .build();<br>    return chain.proceed(requestWithUserAgent);<br>  }<br>}</p>
+<p>你可以使用任何你觉得有用的信息作为参数传递到UserAgentInterceptor的构造方法中来构造User-Agent头的值。我们使用了一下的信息：</p>
+<p>Android系统的os值，用它来明确额标识出这是来自Android设备的请求<br>Build.MODEL, 或“终端用户可见的产品名称”<br>Build.BRAND, 或“消费者可见的产品或者硬件品牌名”<br>Build.VERSION.SDK_INT, 或“用户可见的AndroidSDK版本号”<br>BuildConfig.APPLICATION_ID<br>BuildConfig.VERSION_NAME<br>BuildConfig.VERSION_CODE<br>最后三个参数我们通过Gradle构建脚本里的applicationId, versionCode和versionName来指定。你可以查看这里和这里的文档来获取更多的信息。</p>
+<p>需要注意的是，如果你的App中用到了WebView,你可以配置你的WebView使用与UserAgentInterceptor的构造参数相同的User-Agent的值：</p>
+<p>WebSettings settings = webView.getSettings();<br>settings.setUserAgentString(userAgentHeaderValue);</p>
+<ol>
+<li>配置合理的超时时间<br>在2.5.0之前，OkHttp的请求默认不会超时。从2.5.0开始，如果一个请求建立连接后从这个连接中读取数据或者向这个连接写入数据超过10秒钟就认为超时。更新到2.5.0之后，我们的代码中出现了一些bug，因为一开始想要确定出错的具体位置。要覆盖这些默认行为，只需要对应的去调用setConnectTimeout、setReadTimeout 或者 setWriteTimeout方法即可。</li>
+</ol>
+<p>需要注意的是Picasso和Retrofit的默认OkHttpClient的超时时间是不同的。Picasso的默认值分别是：</p>
+<p>连接超时15秒<br>读数据超时20秒<br>写数据超时20秒<br>而Retrofit的默认值是：</p>
+<p>连接超时15秒<br>读数据超时20秒<br>写数据不会超时<br>你可以使用自定义的OkHttpClient来配置Picasso和Retrofit，这样就可以保证所有的请求超时时间都是统一的。</p>
+<p>总结<br>再次声明，默认的OkHttp的配置方式已经提供了很大的便利。但是通过以上步骤你可以提高它更加高效与智能，从而提升你的App质量</p>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -338,7 +508,7 @@
     <li id="sidebar-first-li">
         <a href="/" target="_self">
             <i class="material-icons sidebar-material-icons">home</i>
-            الرئيسية
+            主页
         </a>
     </li>
 
@@ -356,12 +526,12 @@
     <li class="dropdown">
         <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
             <i class="material-icons sidebar-material-icons">inbox</i>
-             أرشيف
+             归档
             <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2015/12/">December 2015<span class="sidebar_archives-count">1</span></a>
+            <a class="sidebar_archives-link" href="/archives/2015/12/">十二月 2015<span class="sidebar_archives-count">1</span></a>
         </ul>
     </li>
 
@@ -378,7 +548,7 @@
     <!-- Article Numebr  -->
     <li>
         <a href="/archives">
-            رقم المقالة
+            文章总数
             <span class="sidebar-badge">1</span>
         </a>
     </li>
@@ -402,7 +572,7 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Theme Material -->
 <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
     <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-        سمة - Material
+        主题 - Material
         <span class="sidebar-badge badge-circle">i</span>
     </div>
 </a>
